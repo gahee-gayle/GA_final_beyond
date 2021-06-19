@@ -1,0 +1,107 @@
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:regular,bold,italic&subset=latin,latin-ext');
+
+/* Cards */
+.Card-img {
+  max-width: 100%;
+  object-fit: cover;
+  min-height: 225px;
+}
+.Portfolio-card > p {
+  font-family: Roboto;
+  text-align: left;
+  margin: 0;
+}
+.School {
+  font-weight: bold;
+  padding-top: 0.5em;
+}
+.Name {
+  padding-top: 0.25em;
+  color: rgb(83, 82, 82);
+}
+.Year {
+  padding-top: 0.25em;
+  padding-left: 0.5em;
+  color: black;
+}
+
+/* Nav  */
+.Nav {
+  text-align: left;
+  padding: 0.75em 1.25em 0.75em 1.25em;
+  border-bottom: 1px solid black;
+}
+
+.Nav > h2 {
+  display: inline;
+}
+
+.Nav > button {
+  float: right;
+  padding: 0.4em 1.5em;
+  margin-left: 1.25em;
+  margin-bottom: 1em;
+  border-radius: 1.5em;
+  border: 0px;
+  color: white;
+  background-color: #c4c4c4;
+  font-weight: 600;
+  font-size: 1em;
+}
+.Nav > button.Active,
+button:hover {
+  color: white;
+  background-color: black;
+}
+
+/* Search  */
+.Search {
+  border: 1px solid #c4c4c4;
+  box-sizing: border-box;
+  border-radius: 1.5em;
+  margin: 1.25em;
+  display: grid;
+  grid-template-columns: 77% 23%;
+  grid-gap: 1.25em;
+  background: none;
+}
+
+.Icon {
+  padding: 0.5em 1.25em 0.5em 1.25em;
+  position: absolute;
+  color: #c4c4c4;
+  size: 2em;
+}
+
+.Search > input {
+  border: 0px;
+  border-radius: 1.5em;
+
+  height: 3em;
+  width: 100%;
+}
+
+.SearchItemBox {
+  border-left: 1px solid #c4c4c4;
+  padding-right: 2em;
+  padding-left: 0.75em;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 1.25em;
+}
+
+.SearchItemBox > button {
+  margin: 0.5em;
+  border-radius: 1.5em;
+  border: 0px;
+  color: white;
+  background-color: #c4c4c4;
+  font-weight: 600;
+  font-size: 0.85em;
+}
+
+.SearchItemBox > button.Active,
+button:hover {
+  color: white;
+  background-color: black;
+}
