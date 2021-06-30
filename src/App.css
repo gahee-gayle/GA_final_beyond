@@ -41,6 +41,6 @@
 .Card-grid-wrapper {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  grid-gap: 1.25em;
-  padding: 0.5em 1.25em;
+  grid-gap: 1.25rem;
+  padding: 0.5rem 1.25rem;
 }

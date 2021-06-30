@@ -28,7 +28,10 @@ class App extends Component {
     return (
       <div className="App">
         <Nav />
-        <Search onTermSubmit={this.onTermSubmit} />
+        <Search
+          onTermSubmit={this.onTermSubmit}
+          portfolioDB={this.state.portfolioDB}
+        />
         <div className="Card-grid-wrapper">
           {portfolioDB.map((portfolio) => (
             <PortfolioCard portfolio={portfolio} />

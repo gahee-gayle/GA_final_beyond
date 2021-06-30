@@ -2,18 +2,25 @@ import React, { Component } from 'react';
 import { RiSearchLine } from 'react-icons/ri';
 
 class Search extends Component {
-  constructor() {
-    super();
-    this.state = { term: '' };
+  constructor(props) {
+    super(props);
+    this.state = {
+      term: '',
+      showSearchIcon: true,
+    };
   }
 
   onInputChange = (e) => {
     this.setState({ term: e.target.value });
     console.log(e.target.value);
+
+    let filterSchool = this.props.portfolioDB;
+    filterSchool = filterSchool.filter((school) => {
+      return school.toLowerCase().search(e.target.value.toLowerCase());
+    });
   };
 
   onInputSubmit = (e) => {
-    // e.preventDefault();
     if (e.key === 'Enter') {
       console.log(this.state.term);
     }
@@ -21,7 +28,7 @@ class Search extends Component {
   };
 
   onInputClick = () => {
-    console.log('clicked');
+    this.setState({ showSearchIcon: false });
   };
 
   render() {
@@ -35,7 +42,9 @@ class Search extends Component {
           // onSubmit={this.onInputSubmit}
           onClick={this.onInputClick}
         />
-        <RiSearchLine size="1.5em" className="Icon" />
+        {this.state.showSearchIcon ? (
+          <RiSearchLine size="1.5em" className="Icon" />
+        ) : null}
         <div className="SearchItemBox">
           <button className="Active">School</button>
           <button>Major</button>
