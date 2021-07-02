@@ -13,11 +13,6 @@ class Search extends Component {
   onInputChange = (e) => {
     this.setState({ term: e.target.value });
     console.log(e.target.value);
-
-    let filterSchool = this.props.portfolioDB;
-    filterSchool = filterSchool.filter((school) => {
-      return school.toLowerCase().search(e.target.value.toLowerCase());
-    });
   };
 
   onInputSubmit = (e) => {

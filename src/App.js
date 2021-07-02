@@ -15,13 +15,23 @@ class App extends Component {
       school: '',
       major: '',
       year: 2020,
+      portfolioData: [],
       Portfolio: [{ img: [], desc: '' }],
     };
   }
 
+  componentDidMount() {
+    // call api
+    this.setState({ portfolioData: portfolioDB });
+  }
+
   onTermSubmit = (term) => {
-    //search term
-    console.log(term);
+    let filterSchool = this.state.portfolioData;
+    filterSchool = filterSchool.filter((portfolio) => {
+      return portfolio.school.toLowerCase().search(term.toLowerCase()) !== -1;
+    });
+
+    this.setState({ portfolioData: filterSchool });
   };
 
   render() {
@@ -30,10 +40,10 @@ class App extends Component {
         <Nav />
         <Search
           onTermSubmit={this.onTermSubmit}
-          portfolioDB={this.state.portfolioDB}
+          // portfolioDB={this.state.portfolioDB}
         />
         <div className="Card-grid-wrapper">
-          {portfolioDB.map((portfolio) => (
+          {this.state.portfolioData.map((portfolio) => (
             <PortfolioCard portfolio={portfolio} />
           ))}
         </div>
