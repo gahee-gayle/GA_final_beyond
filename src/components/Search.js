@@ -5,23 +5,9 @@ class Search extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      term: '',
       showSearchIcon: true,
     };
   }
-
-  onInputChange = (e) => {
-    this.setState({ term: e.target.value });
-    console.log(e.target.value);
-  };
-
-  onInputSubmit = (e) => {
-    if (e.key === 'Enter') {
-      console.log(this.state.term);
-    }
-    this.props.onTermSubmit(this.state.term);
-  };
-
   onInputClick = () => {
     this.setState({ showSearchIcon: false });
   };
@@ -31,28 +17,36 @@ class Search extends Component {
       <div className="Search">
         <input
           type="text"
-          value={this.state.term}
-          onChange={this.onInputChange}
-          onKeyPress={this.onInputSubmit}
-          // onSubmit={this.onInputSubmit}
+          value={this.props.term}
+          onChange={this.props.onInputChange}
+          onKeyPress={this.props.onInputChange}
           onClick={this.onInputClick}
+          placeholder="Search portfolios by school, major or year"
         />
         {this.state.showSearchIcon ? (
           <RiSearchLine size="1.5em" className="Icon" />
         ) : null}
+
         <div className="SearchItemBox">
-          <button className="Active">School</button>
-          <button>Major</button>
-          <button>Year</button>
+          <button
+            onClick={() => {
+              this.props.sortByMostPopular();
+            }}
+            className=""
+          >
+            Most Popular
+          </button>
+
+          <button
+            onClick={() => {
+              this.props.sortByMostRecent();
+            }}
+          >
+            Most Recent
+          </button>
         </div>
       </div>
     );
   }
 }
-
 export default Search;
-
-//if(this.state.term)
-//if(this.state.term.trim()!==" ")
-//https://reactjs.org/docs/conditional-rendering.html
-//https://stackoverflow.com/questions/27827234/how-to-handle-the-onkeypress-event-in-reactjs

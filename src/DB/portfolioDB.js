@@ -8,8 +8,9 @@ const portfolioDB = [
     school: 'California College of the Arts',
     major: 'Illustration',
     name: 'Chance Lipshutz',
-    year: 2020,
+    year: 2021,
     Portfolio: [{ img: [], desc: '' }],
+    likes: 2,
   },
   {
     id: 346365,
@@ -18,8 +19,9 @@ const portfolioDB = [
     school: 'New York University',
     major: 'Fine Arts',
     name: 'Allison Lubin',
-    year: 2021,
+    year: 2019,
     Portfolio: [{ img: [], desc: '' }],
+    likes: 1104,
   },
   {
     id: 346366,
@@ -28,8 +30,9 @@ const portfolioDB = [
     school: 'University of Michigan',
     major: 'Design',
     name: 'Ann Carder',
-    year: 2019,
+    year: 2020,
     Portfolio: [{ img: [], desc: '' }],
+    likes: 980,
   },
 ];
 

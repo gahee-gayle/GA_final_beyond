@@ -17,21 +17,59 @@ class App extends Component {
       year: 2020,
       portfolioData: [],
       Portfolio: [{ img: [], desc: '' }],
+      likes: '',
+      term: '',
     };
   }
 
   componentDidMount() {
     // call api
-    this.setState({ portfolioData: portfolioDB });
+    // this.setState({ portfolioData: portfolioDB });
+
+    const sortedData = portfolioDB.sort((a, b) => (a.likes < b.likes ? 1 : -1));
+    this.setState({
+      portfolioData: sortedData,
+    });
   }
 
-  onTermSubmit = (term) => {
-    let filterSchool = this.state.portfolioData;
+  onInputChange = (e, term) => {
+    if (e.key === 'Enter') {
+      console.log(this.state.term);
+    }
+
+    let filterSchool = portfolioDB;
     filterSchool = filterSchool.filter((portfolio) => {
-      return portfolio.school.toLowerCase().search(term.toLowerCase()) !== -1;
+      return (
+        portfolio.school.toLowerCase().search(e.target.value.toLowerCase()) !==
+          -1 ||
+        portfolio.major.toLowerCase().search(e.target.value.toLowerCase()) !==
+          -1 ||
+        portfolio.year.toString().search(e.target.value.toLowerCase()) !== -1
+      );
     });
 
-    this.setState({ portfolioData: filterSchool });
+    this.setState({
+      term: e.target.value,
+      portfolioData: filterSchool,
+    });
+  };
+
+  sortByMostPopular = () => {
+    const sortedData = this.state.portfolioData.sort((a, b) =>
+      a.likes < b.likes ? 1 : -1
+    );
+    this.setState({
+      portfolioData: sortedData,
+    });
+  };
+
+  sortByMostRecent = () => {
+    const sortedData = this.state.portfolioData.sort((a, b) =>
+      a.year < b.year ? 1 : -1
+    );
+    this.setState({
+      portfolioData: sortedData,
+    });
   };
 
   render() {
@@ -39,17 +77,18 @@ class App extends Component {
       <div className="App">
         <Nav />
         <Search
-          onTermSubmit={this.onTermSubmit}
-          // portfolioDB={this.state.portfolioDB}
+          onInputChange={this.onInputChange}
+          sortByMostPopular={this.sortByMostPopular}
+          sortByMostRecent={this.sortByMostRecent}
+          term={this.state.term}
         />
         <div className="Card-grid-wrapper">
-          {this.state.portfolioData.map((portfolio) => (
-            <PortfolioCard portfolio={portfolio} />
+          {this.state.portfolioData.map((portfolio, id) => (
+            <PortfolioCard portfolio={portfolio} key={id} />
           ))}
         </div>
       </div>
     );
   }
 }
-
 export default App;
